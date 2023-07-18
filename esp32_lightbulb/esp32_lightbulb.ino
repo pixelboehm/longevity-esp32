@@ -8,7 +8,7 @@
 
 const char* ssid = "";
 const char* password = "";
-const char* bootstrapper_address = "";
+String bootstrapper_address = ""; // "IP:PORT"
 static String ldt_address;
 bool paired = false;
 
@@ -52,7 +52,8 @@ void setup() {
 }
 
 void connectToBootstrapper(WiFiClient *client, HTTPClient *http) {
-    http->begin(*client, bootstrapper_address);
+    String bootstrapper_register_address = "http://" + bootstrapper_address + "/register";
+    http->begin(*client, bootstrapper_register_address);
     http->addHeader("Content-Type", "application/json");
     http->setTimeout(20000);
 
@@ -61,7 +62,7 @@ void connectToBootstrapper(WiFiClient *client, HTTPClient *http) {
 
     doc["Name"] = "lightbulb";
     doc["MacAddress"] = WiFi.macAddress();
-    doc["Version"] = "0.12.0";
+    doc["Version"] = "0.12.2";
 
     char httpRequestData[1024];
     uint32_t size = serializeJson(doc, httpRequestData);
