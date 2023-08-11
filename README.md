@@ -10,6 +10,11 @@ For a complete understanding of the project, please refer to the following repos
 - [LDT Meta Repository](https://github.com/pixelboehm/meta-ldt): Stores a file with links to repositories containing LDTs.
 - (Optional) [Homebrew-LDT](https://github.com/pixelboehm/homebrew-ldt): Contains Homebrew (outdated) formulas for the ODM and LDTs. The formulas are not up-to-date anymore, but can be enabled through the `.goreleaser.yml` again.
 
+## Applications
+
+- Lightbulb
+- Switch
+
 ## Setup Variables
 
 The following variables need to be set at the beginning of each file, in order to function properly:
@@ -17,7 +22,7 @@ The following variables need to be set at the beginning of each file, in order t
 ```c
 const char* ssid = "";
 const char* password = "";
-const char* bootstrapper_address = "http://<ip-address>/register";
+const char* bootstrapper_address = ""; // IP:PORT
 ```
 
 ## Building
